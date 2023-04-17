@@ -16,6 +16,11 @@ public class BookController {
     @Operation(summary = "Uue raamatu loomise vormi kuvamine",
             description = "Kuvab vormi kasutajale, kuhu on võimalik sisestada uue raamatu info")
     public ModelAndView displayNewBookForm() {
-        return new ModelAndView("new");
+        return bookService.displayNewBookForm();
+    }
+
+    @PostMapping("new")
+    public Book addBook(@RequestBody BookView bookView) {
+        return bookService.addBook(bookView);
     }
 }
