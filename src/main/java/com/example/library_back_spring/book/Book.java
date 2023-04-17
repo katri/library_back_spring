@@ -3,13 +3,13 @@ import lombok.Data;
 
 @Data
 public class Book {
-    private String id;
+    private long id;
     private String title;
     private String author;
     private int yearPublished;
     private String genre;
 
-    public Book(String id, String title, String author, int yearPublished, String genre) {
+    public Book(long id, String title, String author, int yearPublished, String genre) {
         this.id = id;
         this.title = title;
         this.author = author;
