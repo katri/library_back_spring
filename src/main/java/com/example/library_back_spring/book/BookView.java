@@ -2,8 +2,10 @@ package com.example.library_back_spring.book;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
-public class BookView {
+public class BookView implements Serializable {
     private String title;
     private String author;
     private int yearPublished;

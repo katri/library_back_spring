@@ -9,11 +9,10 @@ class BookServiceTest {
 
     @Test
     void createNewBookWithAllValues() {
+        BookView bookView = new BookView("Sipsik", "Eno Raud", 1980, "lastekirjandus");
 
-        Book book = new Book(1, "Sipsik", "Eno Raud", 1980, "lastekirjandus");
-        Book createdBook = bookService.addBook(book);
+        Book createdBook = bookService.addBook(bookView);
 
-        assertEquals(1, createdBook.getId());
         assertEquals("Sipsik", createdBook.getTitle());
         assertEquals("Eno Raud", createdBook.getAuthor());
         assertEquals(1980, createdBook.getYearPublished());

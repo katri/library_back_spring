@@ -9,7 +9,8 @@ import java.util.List;
 public class BookService {
    private final List<Book> books = new ArrayList<>();
 
-    public Book addBook(Book book) {
+    public Book addBook(BookView bookView) {
+        Book book = new Book(1, bookView.getTitle(), bookView.getAuthor(), bookView.getYearPublished(), bookView.getGenre());
         books.add(book);
         return book;
     }
