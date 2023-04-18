@@ -11,7 +11,8 @@ public class BookService {
    private final List<Book> books = new ArrayList<>();
 
     public Book addBook(BookView bookView) {
-        Book book = new Book(1, bookView.getTitle(), bookView.getAuthor(), bookView.getYearPublished(), bookView.getGenre());
+        long newBookId = books.size() + 1;
+        Book book = new Book(newBookId, bookView.getTitle(), bookView.getAuthor(), bookView.getYearPublished(), bookView.getGenre());
         books.add(book);
         return book;
     }
