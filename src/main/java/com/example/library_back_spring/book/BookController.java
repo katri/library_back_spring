@@ -5,6 +5,8 @@ import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("books/")
 public class BookController {
@@ -27,5 +29,10 @@ public class BookController {
     @GetMapping("{id}")
     public Book getBookBy(@PathVariable String id) {
         return bookService.getBookBy(id);
+    }
+
+    @GetMapping("/")
+    public List<Book> getAllBooks() {
+        return bookService.getAllBooks();
     }
 }

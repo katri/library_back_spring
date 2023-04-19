@@ -31,4 +31,8 @@ public class BookService {
         }
         return null;
     }
+
+    public List<Book> getAllBooks() {
+        return books;
+    }
 }
