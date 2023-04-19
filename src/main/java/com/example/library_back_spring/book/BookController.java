@@ -23,4 +23,9 @@ public class BookController {
     public Book addBook(@RequestBody BookView bookView) {
         return bookService.addBook(bookView);
     }
+
+    @GetMapping("{id}")
+    public Book getBookBy(@PathVariable String id) {
+        return bookService.getBookBy(id);
+    }
 }
