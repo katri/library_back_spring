@@ -1,5 +1,6 @@
 package com.example.library_back_spring.book;
 
+import com.example.library_back_spring.HTMLTemplateRenderer;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -11,6 +12,7 @@ import static java.lang.Long.parseLong;
 @Service
 public class BookService {
     private final List<Book> books = new ArrayList<>();
+    private final HTMLTemplateRenderer htmlTemplateRenderer = new HTMLTemplateRenderer();
 
     public Book addBook(BookView bookView) {
         long newBookId = books.size() + 1;
@@ -23,10 +25,15 @@ public class BookService {
         return new ModelAndView("new");
     }
 
-    public Book getBookBy(String id) {
+    public String getBookBy(String id) {
         for (Book book : books) {
             if (book.getId() == parseLong(id)) {
-                return book;
+                try {
+                    return htmlTemplateRenderer.toHtml(book, "templates/book.html");
+                } catch (Exception exception) {
+                    exception.printStackTrace();
+                    return "Lehekülge ei leitud";
+                }
             }
         }
         return null;

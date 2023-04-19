@@ -27,7 +27,7 @@ public class BookController {
     }
 
     @GetMapping("{id}")
-    public Book getBookBy(@PathVariable String id) {
+    public String getBookBy(@PathVariable String id) {
         return bookService.getBookBy(id);
     }
 

@@ -6,23 +6,18 @@
 <head>
     <meta charset="utf-8">
     <title>
-        Raamatukogu
+        Raamatu info
     </title>
 </head>
 <body>
-<h1>Tere!</h1>
-<p>See on raamatukogu app</p>
-
-
 <div class="container">
-    <h1>My First Bootstrap Page</h1>
-    <p>This part is inside a .container class.</p>
-    <p>The .container class provides a responsive fixed width container.</p>
+    {{#.}}
+    <div class="flex-row"> raamatu id: {{id}}</div>
+    <div class="flex-row"> pealkiri: {{title}}</div>
+    <div class="flex-row"> autor: {{author}}</div>
+    <div class="flex-row"> väljalaskeaasta: {{yearPublished}}</div>
+    <div class="flex-row"> žanr: {{genre}}</div>
+    {{/.}}
 </div>
-
-<form action="/library" method="post" enctype="multipart/form-data">
-    <input type="submit" value="Lisa raamat">
-</form>
-
 </body>
 </html>
