@@ -39,7 +39,12 @@ public class BookService {
         return null;
     }
 
-    public List<Book> getAllBooks() {
-        return books;
+    public String getAllBooks() {
+        try {
+            return htmlTemplateRenderer.toHtml(books, "templates/index.html");
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            return "Lehekülge ei leitud";
+        }
     }
 }
