@@ -58,7 +58,7 @@ public class BookService {
     public String getBookBy(Integer id) {
         List<Book> books = bookRepository.findById(id).stream().toList();
         for (Book book : books) {
-            if (book.getId() == id) {
+            if (book.getId().equals(id)) {
                 try {
                     return htmlTemplateRenderer.toHtml(book, "templates/book.html");
                 } catch (Exception exception) {
