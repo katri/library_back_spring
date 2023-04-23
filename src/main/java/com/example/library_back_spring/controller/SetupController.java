@@ -39,6 +39,7 @@ public class SetupController {
     public List<BookStatusView> getAllStatuses() {
         return bookStatusService.getAllStatuses();
     }
+
     @PostMapping("statuses/new")
     public BookStatusView addNewBookStatus(@RequestBody BookStatusView bookStatusView) {
         return bookStatusService.addNewBookStatus(bookStatusView);
