@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface BookAuthorRepository extends JpaRepository<BookAuthor, Integer> {
+    BookAuthor findByLastNameAllIgnoreCase(String lastName);
 }
