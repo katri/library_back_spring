@@ -1,6 +1,5 @@
 package com.example.library_back_spring.controller;
 
-import com.example.library_back_spring.entity.Book;
 import com.example.library_back_spring.view.BookStatusView;
 import com.example.library_back_spring.view.CategoryView;
 import jakarta.annotation.Resource;
@@ -39,5 +38,9 @@ public class SetupController {
     @GetMapping("statuses")
     public List<BookStatusView> getAllStatuses() {
         return bookStatusService.getAllStatuses();
+    }
+    @PostMapping("statuses/new")
+    public BookStatusView addNewBookStatus(@RequestBody BookStatusView bookStatusView) {
+        return bookStatusService.addNewBookStatus(bookStatusView);
     }
 }

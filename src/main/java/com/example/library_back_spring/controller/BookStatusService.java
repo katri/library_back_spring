@@ -24,4 +24,10 @@ public class BookStatusService {
     public List<BookStatusView> getAllStatuses() {
         return bookStatusMapper.toDto(bookStatusRepository.findAllOrdered());
     }
+
+    public BookStatusView addNewBookStatus(BookStatusView bookStatusView) {
+        BookStatus bookStatus = bookStatusMapper.toEntity(bookStatusView);
+        bookStatusRepository.save(bookStatus);
+        return bookStatusMapper.toDto(bookStatus);
+    }
 }
