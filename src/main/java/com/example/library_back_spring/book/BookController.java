@@ -1,5 +1,7 @@
 package com.example.library_back_spring.book;
 
+import com.example.library_back_spring.entity.Book;
+import com.example.library_back_spring.view.BookView;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
@@ -27,12 +29,22 @@ public class BookController {
     }
 
     @GetMapping("{id}")
-    public String getBookBy(@PathVariable String id) {
+    public String getBookBy(@PathVariable Integer id) {
         return bookService.getBookBy(id);
     }
 
     @GetMapping("/")
     public String getAllBooks() {
         return bookService.getAllBooks();
+    }
+
+    @GetMapping("/author")
+    public List<Book> getBooksByAuthor(@RequestParam String name) {
+        return bookService.getBooksByAuthor(name);
+    }
+
+    @GetMapping("/title")
+    public BookView getBookByTitle(@RequestParam String title) {
+        return bookService.getBookByTitle(title);
     }
 }
