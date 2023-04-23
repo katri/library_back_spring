@@ -25,7 +25,6 @@ public class BooksToUser {
     @Column(name = "end_date", nullable = false)
     private LocalDate endDate;
 
-    @NotNull
     @Column(name = "comment", nullable = false, length = Integer.MAX_VALUE)
     private String comment;
 

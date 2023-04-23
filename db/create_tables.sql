@@ -41,7 +41,7 @@ CREATE TABLE books_to_users (
                                 id serial  NOT NULL,
                                 start_date date  NOT NULL,
                                 end_date date  NOT NULL,
-                                comment text  NOT NULL,
+                                comment text  NULL,
                                 book_id serial  NOT NULL,
                                 user_id serial  NOT NULL,
                                 CONSTRAINT books_to_users_pk PRIMARY KEY (id)

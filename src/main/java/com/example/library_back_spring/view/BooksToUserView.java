@@ -18,7 +18,6 @@ public class BooksToUserView implements Serializable {
     private final LocalDate startDate;
     @NotNull
     private final LocalDate endDate;
-    @NotNull
     private final String comment;
     @NotNull
     private final Book book;
