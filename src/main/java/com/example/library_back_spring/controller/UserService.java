@@ -1,8 +1,8 @@
 package com.example.library_back_spring.controller;
 
+import com.example.library_back_spring.entity.User;
 import com.example.library_back_spring.mapper.UserMapper;
 import com.example.library_back_spring.repository.UserRepository;
-import com.example.library_back_spring.view.CategoryView;
 import com.example.library_back_spring.view.UserView;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
@@ -20,4 +20,10 @@ public class UserService {
     public List<UserView> getAllUsers() {
         return userMapper.toDto(userRepository.findAllOrdered());
     }
+
+    public UserView addNewUser(UserView userView) {
+        User user = userMapper.toEntity(userView);
+        userRepository.save(user);
+        return userMapper.toDto(user);
+     }
 }
