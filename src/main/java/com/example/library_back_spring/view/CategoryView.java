@@ -10,7 +10,6 @@ import java.io.Serializable;
  */
 @Data
 public class CategoryView implements Serializable {
-    private final Integer id;
     @NotNull
     private final String name;
     @NotNull
