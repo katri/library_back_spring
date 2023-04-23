@@ -31,4 +31,8 @@ public class CategoryService {
         categoryRepository.save(category);
         return categoryMapper.toDto(category);
     }
+
+    public List<CategoryView> getAllCategories() {
+        return categoryMapper.toDto(categoryRepository.findAllOrdered());
+    }
 }
