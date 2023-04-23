@@ -13,7 +13,7 @@ CREATE TABLE book (
                       id serial  NOT NULL,
                       title text  NOT NULL,
                       year_published int  NOT NULL,
-                      un_code text  NOT NULL,
+                      un_code bigint  NOT NULL,
                       category_id serial  NOT NULL,
                       book_author_id serial  NOT NULL,
                       book_status_id serial  NOT NULL,

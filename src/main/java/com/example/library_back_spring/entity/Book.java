@@ -25,7 +25,7 @@ public class Book {
 
     @NotNull
     @Column(name = "un_code", nullable = false, length = Integer.MAX_VALUE)
-    private String unCode;
+    private Long unCode;
 
     @NotNull
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
