@@ -17,7 +17,7 @@ import java.util.List;
 @Service
 public class BookService {
     private final HTMLTemplateRenderer htmlTemplateRenderer = new HTMLTemplateRenderer();
-    private CodeGenerator codeGenerator = new CodeGenerator();
+    private final CodeGenerator codeGenerator = new CodeGenerator();
     @Resource
     private BookStatusService bookStatusService;
     @Resource
