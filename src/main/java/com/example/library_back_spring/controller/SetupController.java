@@ -21,4 +21,14 @@ public class SetupController {
     public CategoryView addNewCategory(@RequestBody CategoryView categoryView) {
         return categoryService.addNewCategory(categoryView);
     }
+
+    @GetMapping("categories/{id}")
+    public CategoryView getCategoryInfo(@PathVariable Integer id) {
+        return categoryService.getCategoryInfo(id);
+    }
+
+    @PatchMapping("categories/{id}")
+    public void updateCategoryInfo(@RequestBody CategoryView categoryView) {
+        categoryService.updateCategoryInfo(categoryView);
+     }
 }

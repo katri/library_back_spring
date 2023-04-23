@@ -6,6 +6,7 @@ import com.example.library_back_spring.repository.CategoryRepository;
 import com.example.library_back_spring.view.CategoryView;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -34,5 +35,16 @@ public class CategoryService {
 
     public List<CategoryView> getAllCategories() {
         return categoryMapper.toDto(categoryRepository.findAllOrdered());
+    }
+
+    public CategoryView getCategoryInfo(Integer id) {
+        return categoryMapper.toDto(categoryRepository.findById(id).get());
+    }
+
+    public void updateCategoryInfo(CategoryView categoryView) {
+        Category category = categoryRepository.findById(categoryView.getId()).get();
+        category.setName(categoryView.getName());
+        category.setCode(categoryView.getCode());
+        categoryRepository.save(category);
     }
 }
