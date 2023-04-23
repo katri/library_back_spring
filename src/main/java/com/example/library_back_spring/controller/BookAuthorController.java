@@ -1,4 +1,4 @@
-package com.example.library_back_spring.bookAuthor;
+package com.example.library_back_spring.controller;
 
 import com.example.library_back_spring.entity.BookAuthor;
 import jakarta.annotation.Resource;

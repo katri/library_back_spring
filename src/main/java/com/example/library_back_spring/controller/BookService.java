@@ -1,4 +1,4 @@
-package com.example.library_back_spring.book;
+package com.example.library_back_spring.controller;
 
 import com.example.library_back_spring.HTMLTemplateRenderer;
 import com.example.library_back_spring.entity.Book;
@@ -6,10 +6,7 @@ import com.example.library_back_spring.entity.BookAuthor;
 import com.example.library_back_spring.entity.Category;
 import com.example.library_back_spring.helper.CodeGenerator;
 import com.example.library_back_spring.mapper.BookMapper;
-import com.example.library_back_spring.repository.BookAuthorRepository;
 import com.example.library_back_spring.repository.BookRepository;
-import com.example.library_back_spring.repository.BookStatusRepository;
-import com.example.library_back_spring.repository.CategoryRepository;
 import com.example.library_back_spring.view.BookView;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
@@ -19,23 +16,27 @@ import java.util.List;
 
 @Service
 public class BookService {
-     private final HTMLTemplateRenderer htmlTemplateRenderer = new HTMLTemplateRenderer();
+    private final HTMLTemplateRenderer htmlTemplateRenderer = new HTMLTemplateRenderer();
     private CodeGenerator codeGenerator = new CodeGenerator();
     @Resource
-    private BookRepository bookRepository;
+    private BookStatusService bookStatusService;
     @Resource
-    private BookStatusRepository bookStatusRepository;
+    private BookAuthorService bookAuthorService;
     @Resource
-    private BookAuthorRepository bookAuthorRepository;
-    @Resource
-    private CategoryRepository categoryRepository;
+    private CategoryService categoryService;
     @Resource
     private BookMapper bookMapper;
+    @Resource
+    private BookRepository bookRepository;
 
     public Book addBook(BookView bookView) {
+        return mapBookEntityAndSaveToDatabase(bookView);
+    }
+
+    private Book mapBookEntityAndSaveToDatabase(BookView bookView) {
         Book book = bookMapper.toEntity(bookView);
         book.setUnCode(codeGenerator.generate());
-        book.setBookStatus(bookStatusRepository.findByDescriptionIgnoreCase("kohal"));
+        book.setBookStatus(bookStatusService.setAsAvailable());
         book.setBookAuthor(assignAuthor(bookView));
         book.setCategory(assignCategory(bookView.getCategory()));
         bookRepository.save(book);
@@ -43,35 +44,11 @@ public class BookService {
     }
 
     private Category assignCategory(String bookCategoryName) {
-        List<Category> categories = categoryRepository.findAll();
-        for (Category category : categories) {
-            if (category.getCode().equals(bookCategoryName)) {
-                return category;
-            }
-        }
-        return categories.get(0);
+        return categoryService.assignCategory(bookCategoryName);
     }
 
     private BookAuthor assignAuthor(BookView bookView) {
-        String lastName = bookView.getBookAuthorLastName();
-        String firstName = bookView.getBookAuthorFirstName();
-        String middleName = bookView.getBookAuthorMiddleName();
-        List<BookAuthor> authors = bookAuthorRepository.findByLastName(lastName);
-        if (authors.isEmpty()) {
-            BookAuthor newBookAuthor = new BookAuthor();
-            newBookAuthor.setFirstName(firstName);
-            newBookAuthor.setMiddleName(middleName);
-            newBookAuthor.setLastName(lastName);
-            bookAuthorRepository.save(newBookAuthor);
-            return newBookAuthor;
-        } else if (authors.size() > 1) {
-            for (BookAuthor author : authors) {
-                if (author.getFirstName().equals(firstName) && author.getMiddleName().equals(middleName)) {
-                    return author;
-                }
-            }
-        }
-        return authors.get(0);
+        return bookAuthorService.assignAuthor(bookView);
     }
 
     public ModelAndView displayNewBookForm() {

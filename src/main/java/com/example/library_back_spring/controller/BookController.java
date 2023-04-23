@@ -1,4 +1,4 @@
-package com.example.library_back_spring.book;
+package com.example.library_back_spring.controller;
 
 import com.example.library_back_spring.entity.Book;
 import com.example.library_back_spring.view.BookView;
