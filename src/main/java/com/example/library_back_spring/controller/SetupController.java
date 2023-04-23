@@ -1,5 +1,7 @@
 package com.example.library_back_spring.controller;
 
+import com.example.library_back_spring.entity.Book;
+import com.example.library_back_spring.view.BookStatusView;
 import com.example.library_back_spring.view.CategoryView;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +13,8 @@ import java.util.List;
 public class SetupController {
     @Resource
     private CategoryService categoryService;
+    @Resource
+    private BookStatusService bookStatusService;
 
     @GetMapping("categories")
     public List<CategoryView> getAllCategories() {
@@ -31,4 +35,9 @@ public class SetupController {
     public void updateCategoryInfo(@RequestBody CategoryView categoryView) {
         categoryService.updateCategoryInfo(categoryView);
      }
+
+    @GetMapping("statuses")
+    public List<BookStatusView> getAllStatuses() {
+        return bookStatusService.getAllStatuses();
+    }
 }
