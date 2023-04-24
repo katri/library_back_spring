@@ -10,6 +10,8 @@ import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import static java.lang.Long.parseLong;
+
 @Service
 public class BooksToUserService {
 
@@ -36,8 +38,18 @@ public class BooksToUserService {
         User user = userService.getUser(booksToUserView.getPersonalCode());
         borrowing.setUser(user);
 
-
         booksToUserRepository.save(borrowing);
         return booksToUserMapper.toDto(borrowing);
+    }
+
+    @Transactional
+    public void returnBorrowing(String bookUnCode) {
+
+        Long unCode = parseLong(bookUnCode);
+        Book book = bookService.getBookByUnCode(unCode);
+        bookService.updateBookStatusToAvailable(book);
+
+        BooksToUser bookToUser = booksToUserRepository.findByBook_UnCode(unCode);
+        bookToUser.setIsActive(false);
     }
 }

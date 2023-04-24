@@ -1,7 +1,5 @@
 package com.example.library_back_spring.view;
 
-import com.example.library_back_spring.entity.Book;
-import com.example.library_back_spring.entity.User;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 

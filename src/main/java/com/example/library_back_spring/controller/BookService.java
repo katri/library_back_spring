@@ -96,4 +96,8 @@ public class BookService {
     public void updateBookStatusToBorrowed(Book book) {
         book.setBookStatus(bookStatusService.setAsBorrowed());
     }
+
+    public void updateBookStatusToAvailable(Book book) {
+        book.setBookStatus(bookStatusService.setAsAvailable());
+    }
 }

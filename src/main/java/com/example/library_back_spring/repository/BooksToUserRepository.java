@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface BooksToUserRepository extends JpaRepository<BooksToUser, Integer> {
+    BooksToUser findByBook_UnCode(Long unCode);
 }

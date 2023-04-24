@@ -30,4 +30,9 @@ public class LibraryController {
     public BooksToUserView addNewBorrowing(@RequestBody BooksToUserView booksToUserView) {
         return booksToUserService.addNewBorrowing(booksToUserView);
     }
+
+    @PatchMapping("new")
+    public void returnBorrowing(@RequestParam String bookUnCode) {
+        booksToUserService.returnBorrowing(bookUnCode);
+    }
 }
