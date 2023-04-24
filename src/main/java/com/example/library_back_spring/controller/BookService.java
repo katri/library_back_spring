@@ -88,4 +88,12 @@ public class BookService {
         Book book = bookRepository.findByTitleIgnoreCase(name);
         return bookMapper.toDto(book);
     }
+
+    public Book getBookByUnCode(Long unCode) {
+        return bookRepository.findByUnCode(unCode);
+    }
+
+    public void updateBookStatusToBorrowed(Book book) {
+        book.setBookStatus(bookStatusService.setAsBorrowed());
+    }
 }

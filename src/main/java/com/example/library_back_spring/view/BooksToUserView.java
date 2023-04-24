@@ -20,7 +20,7 @@ public class BooksToUserView implements Serializable {
     private final LocalDate endDate;
     private final String comment;
     @NotNull
-    private final Book book;
+    private final Long unCode;
     @NotNull
-    private final User user;
+    private final Long personalCode;
 }

@@ -8,6 +8,8 @@ import org.mapstruct.*;
 public interface BooksToUserMapper {
     BooksToUser toEntity(BooksToUserView booksToUserView);
 
+    @Mapping(target = "unCode", source ="book.unCode" )
+    @Mapping(target = "personalCode", source = "user.personalCode")
     BooksToUserView toDto(BooksToUser booksToUser);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)

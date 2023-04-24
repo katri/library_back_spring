@@ -1,6 +1,6 @@
 package com.example.library_back_spring.controller;
 
-import com.example.library_back_spring.view.CategoryView;
+import com.example.library_back_spring.view.BooksToUserView;
 import com.example.library_back_spring.view.UserView;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +13,9 @@ public class LibraryController {
     @Resource
     private UserService userService;
 
+    @Resource
+    private BooksToUserService booksToUserService;
+
     @GetMapping("users")
     public List<UserView> getAllUsers() {
         return userService.getAllUsers();
@@ -21,5 +24,10 @@ public class LibraryController {
     @PostMapping("users/new")
     public UserView addNewUser(@RequestBody UserView userView) {
         return userService.addNewUser(userView);
+    }
+
+    @PostMapping("new")
+    public BooksToUserView addNewBorrowing(@RequestBody BooksToUserView booksToUserView) {
+        return booksToUserService.addNewBorrowing(booksToUserView);
     }
 }

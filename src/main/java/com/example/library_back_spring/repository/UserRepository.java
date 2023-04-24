@@ -9,6 +9,8 @@ import java.util.List;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
+    User findByPersonalCode(Long personalCode);
+
     @Query("select u from User u order by u.lastName")
     List<User> findAllOrdered();
 }

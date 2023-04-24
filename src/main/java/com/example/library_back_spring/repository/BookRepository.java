@@ -19,4 +19,7 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
 
     @Override
     Optional<Book> findById(Integer integer);
+
+    @Query("select b from Book b where b.unCode = CAST (?1 as text)")
+    Book findByUnCode(Long unCode);
 }

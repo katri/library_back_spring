@@ -26,4 +26,8 @@ public class UserService {
         userRepository.save(user);
         return userMapper.toDto(user);
      }
+
+    public User getUser(Long personalCode) {
+        return userRepository.findByPersonalCode(personalCode);
+    }
 }

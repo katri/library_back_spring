@@ -21,6 +21,10 @@ public class BookStatusService {
       return bookStatusRepository.findByDescriptionIgnoreCase("kohal");
     }
 
+    public BookStatus setAsBorrowed() {
+        return bookStatusRepository.findByDescriptionIgnoreCase("välja laenutatud");
+    }
+
     public List<BookStatusView> getAllStatuses() {
         return bookStatusMapper.toDto(bookStatusRepository.findAllOrdered());
     }
