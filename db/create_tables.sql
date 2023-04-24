@@ -44,6 +44,7 @@ CREATE TABLE books_to_users (
                                 comment text  NULL,
                                 book_id serial  NOT NULL,
                                 user_id serial  NOT NULL,
+                                is_active boolean NOT NULL,
                                 CONSTRAINT books_to_users_pk PRIMARY KEY (id)
 );
 

@@ -38,4 +38,7 @@ public class BooksToUser {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    @NotNull
+    @Column(name = "is_active", nullable = false)
+    private Boolean isActive;
 }

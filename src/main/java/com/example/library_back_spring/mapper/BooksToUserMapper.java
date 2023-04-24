@@ -6,6 +6,7 @@ import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
 public interface BooksToUserMapper {
+    @Mapping(target = "isActive", constant = "true")
     BooksToUser toEntity(BooksToUserView booksToUserView);
 
     @Mapping(target = "unCode", source ="book.unCode" )
