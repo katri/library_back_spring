@@ -8,8 +8,10 @@ import java.util.List;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
 public interface BookStatusMapper {
+    @Mapping(target = "description", source = "statusDescription")
     BookStatus toEntity(BookStatusView bookStatusView);
 
+    @Mapping(target = "statusDescription", source = "description")
     BookStatusView toDto(BookStatus bookStatus);
     List<BookStatusView> toDto(List<BookStatus> bookStatus);
 

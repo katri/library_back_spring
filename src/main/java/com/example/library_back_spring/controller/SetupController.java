@@ -4,6 +4,7 @@ import com.example.library_back_spring.view.BookStatusView;
 import com.example.library_back_spring.view.CategoryView;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -33,15 +34,25 @@ public class SetupController {
     @PatchMapping("categories/{id}")
     public void updateCategoryInfo(@RequestBody CategoryView categoryView) {
         categoryService.updateCategoryInfo(categoryView);
-     }
+    }
+
+//    @GetMapping("statuses")
+//    public List<<BookStatusView>> getAllStatuses() {
+//        return bookStatusService.getAllStatuses();
+//    }
 
     @GetMapping("statuses")
-    public List<BookStatusView> getAllStatuses() {
-        return bookStatusService.getAllStatuses();
+    public String getAllStatuses() {
+        return bookStatusService.getAllStatusesAsString();
+    }
+
+    @GetMapping("statuses/new")
+    public ModelAndView displayNewBookStatusForm() {
+        return new ModelAndView("new-status");
     }
 
     @PostMapping("statuses/new")
-    public BookStatusView addNewBookStatus(@RequestBody BookStatusView bookStatusView) {
+    public BookStatusView addNewBookStatus(@ModelAttribute BookStatusView bookStatusView) {
         return bookStatusService.addNewBookStatus(bookStatusView);
     }
 }

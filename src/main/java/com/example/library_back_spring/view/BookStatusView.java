@@ -12,5 +12,5 @@ import java.io.Serializable;
 public class BookStatusView implements Serializable {
     private final Integer id;
     @NotNull
-    private final String description;
+    private final String statusDescription;
 }
