@@ -6,32 +6,49 @@
 <head>
     <meta charset="utf-8">
     <title>
-        Raamatute nimekiri
+        Väike raamatukogu rakendus
     </title>
 </head>
 <body>
 
 <div class="container">
-    <table>
-        <tr>
-            <th>raamatu id</th>
-            <th>pealkiri</th>
-            <th>autor</th>
-            <th>väljalaskeaasta</th>
-            <th>žanr</th>
-        </tr>
-        {{#.}}
-        <tr>
-            <td>{{id}}</td>
-            <td>{{title}}</td>
-            <td>{{author}}</td>
-            <td>{{yearPublished}}</td>
-            <td>{{genre}}</td>
-        </tr>
-        {{/.}}
-    </table>
+    <h2>Vali, mida soovid teha</h2>
+    <div class="row align-items-start">
+        <div class="col-2">
+            <form action="/library/new" method="get">
+                <input type="submit" value="Laenutan raamatu"/>
+            </form>
+        </div>
+        <div class="col-2">
+            <form action="/library/new" method="get">
+                <input type="submit" value="Tagastan raamatu"/>
+            </form>
+        </div>
+    </div>
+    <div class="row align-items-start">
+        <div class="col-2">
+            <form action="/books" method="get">
+                <input type="submit" value="Vaatan raamatute nimekirja"/>
+            </form>
+        </div>
+        <div class="col-2">
+            <form action="/books/new" method="get">
+                <input type="submit" value="Lisan raamatu"/>
+            </form>
+        </div>
+    </div>
+    </body>
+<!--    <table>-->
+<!--        <tr>-->
+<!--            <th>raamatu id</th>-->
+<!--            <th>pealkiri</th>-->
+<!--            <th>autor</th>-->
+<!--            <th>väljalaskeaasta</th>-->
+<!--            <th>žanr</th>-->
+<!--        </tr>-->
+
+<!--    </table>-->
 
 
 </div>
-</body>
 </html>

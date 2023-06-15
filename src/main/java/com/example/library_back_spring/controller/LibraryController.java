@@ -4,6 +4,7 @@ import com.example.library_back_spring.view.BooksToUserView;
 import com.example.library_back_spring.view.UserView;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -15,6 +16,11 @@ public class LibraryController {
 
     @Resource
     private BooksToUserService booksToUserService;
+
+    @GetMapping("/")
+    public ModelAndView index() {
+        return new ModelAndView("index");
+    }
 
     @GetMapping("users")
     public List<UserView> getAllUsers() {
